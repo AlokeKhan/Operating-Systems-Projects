@@ -11,11 +11,10 @@ int main(int argc, char *argv[]) {
    
    printf("[Driver]: With seed: %d\n", seed);
 
-   srand(seed);
+   srand(seed); //rng with seed
 
 
    float running_ratio = get_running_ratio();
    printf("[Driver]: AVG prime/composite ratio: %f\n", running_ratio);
-  // printf("[Driver]: Number of iterations is: %d\n", num_iterations);
    return 0;
 }

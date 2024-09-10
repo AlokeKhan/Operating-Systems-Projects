@@ -1,7 +1,7 @@
 CC=gcc
 FLAGS=-Wall	-Wextra	-Wpedantic	-std=c17
 OBJS=Primes.o	Driver.o
-TARGET=run
+TARGET=Driver
 
 $(TARGET):	$(OBJS)
 	$(CC)	$(FLAGS)	-o	$(TARGET)	$(OBJS)	-lm

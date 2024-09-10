@@ -19,19 +19,19 @@ int get_prime_count (int *array, int arraySize) {
    for (int i = 0; i < arraySize; i++) {
        int num = array[i];
        if (num <= 1) {
-           continue;  // Skip numbers less than or equal to 1
+           continue;  
        }
 
        int FLAG = 1; // Assume number is prime
        for (int j = 2; j <= sqrt(num); j++) {
-           if (num % j == 0) {
-               FLAG = 0; // Not prime if divisible
+           if (num % j == 0) { //Check if divisible
+               FLAG = 0; 
                break;
            }
        }
        
        if (FLAG == 1) {
-           prime_count++; // Count prime numbers
+           prime_count++; // Increase prime count if not divisible
        }
    }
    
@@ -45,7 +45,7 @@ float get_running_ratio(){
 
     int arr_size = 0; 
 
-    int num_iterations = random_in_range(50, 100);
+    int num_iterations = random_in_range(50, 101);
 
     for (int i = 1; i < num_iterations; i++){
         arr_size = random_in_range(150, 200);
@@ -54,20 +54,21 @@ float get_running_ratio(){
 
         populate(array, arr_size, 50, 200);
 
-        currentPrimeCount = get_prime_count(array, arr_size);
-        float ratio = (float)currentPrimeCount / (arr_size - currentPrimeCount);
-        finalRatio += ratio;
+        currentPrimeCount = get_prime_count(array, arr_size); //call prime count
+        int currentCompositeCount = arr_size - currentPrimeCount;
+        float ratio = (float)currentPrimeCount / (currentCompositeCount); //calculate ratio
+        finalRatio += ratio; //add to running ratio
 
         if (currentPrimeCount > maxPrimeCount){
             maxPrimeCount = currentPrimeCount;
             maxCountIteration = i -1;
         }
 
-        free(array);
+        //free(array);
     }
     printf("[Primes]: Number of iterations is: %d\n", num_iterations);
     printf("[Primes]: Iteration with MAX prime count: %d\n", maxCountIteration);
 
-    return finalRatio / num_iterations;
+    return finalRatio / num_iterations; //return average ratio
 
 }
